@@ -3,7 +3,7 @@ This implementation of a calculator in [Reverse Polish Notation (RPN)](https://e
 
 ## Structure
 The example is divided into two seperate components: 
-- The `rpn` library responsible for implemententing the calculator logic
+- The `rpn` library responsible for implementing the calculator logic
 - The `command` binary which uses the library to do some math (similar to the `main` function of a normal program)
 
 To be able to execute the example in a WebAssembly runtime such as [`wasmtime`](https://github.com/bytecodealliance/wasmtime), we first need to generate the [component bindings](https://github.com/bytecodealliance/wit-bindgen), build the component binaries and then **[compose](https://component-model.bytecodealliance.org/creating-and-consuming/composing.html)** them.
