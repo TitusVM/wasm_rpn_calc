@@ -1,0 +1,13 @@
+[package]
+name = "command"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+wit-bindgen-rt = { version = "0.32.0", features = ["bitflags"] }
+hpack = "0.3.0"
+
+[package.metadata.component.target]
+
+[package.metadata.component.target.dependencies]
+"component:rpn" = { path = "../wit/rpn" }
