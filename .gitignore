@@ -1,6 +1,6 @@
 */target
 *.wasm
 *.key
-.idea
 *.cdx.json
+binaries
 *.lock

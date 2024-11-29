@@ -1,5 +1,5 @@
-package component:rpn-cmd;
+package root:component;
 
-world app {
+world root {
     import component:rpn/types@0.1.0;
 }
