@@ -1,6 +1,9 @@
 # WASM Component demo
 This implementation of a calculator in [Reverse Polish Notation (RPN)](https://en.wikipedia.org/wiki/Reverse_Polish_notation) serves to demonstrate the functionnality of the [Wasm component model](https://component-model.bytecodealliance.org/).
 
+## Long running main
+Checkout the `long_running` branch to build an executable that takes a long time to run.
+
 ## Structure
 The example is divided into two seperate components: 
 - The `rpn` library responsible for implementing the calculator logic
