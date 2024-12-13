@@ -1,0 +1,7 @@
+
+# cargo-vet audits file
+
+[[audits.bitflags]]
+criteria = "safe-to-deploy"
+version = "2.5.0"
+notes = "Test for running cargo vet"

@@ -4,3 +4,4 @@
 *.cdx.json
 binaries
 *.lock
+*.json
