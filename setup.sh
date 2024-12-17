@@ -88,4 +88,22 @@ for component in command rpn; do
   cd ..
 done
 
+# Extra: Publish the safe composed binary to ghcr.io
+echo "Do you want to publish the safe composed binary to ghcr.io? (y/n)"
+read publish
+if [ "$publish" != "y" ]; then
+  echo "Skipping publishing..."
+else
+  echo "Publishing..."
+  # Check whether or not the CR_PAT environment variable is set and ask for it if it is not
+  if [ -z "$CR_PAT" ]; then
+    echo "Please provide a personal access token:"
+    read CR_PAT
+  fi
+
+  wkg oci push ghcr.io/titusvm/wasm_rpn_calc:latest ./signed_composed_safe.wasm -u TitusVM -p $CR_PAT
+  # Move the public.key into the publisher-key folder
+  mv public.key publisher-key/public.key
+fi
+
 echo "All operations completed successfully!"
