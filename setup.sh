@@ -97,13 +97,16 @@ else
   echo "Publishing..."
   # Check whether or not the CR_PAT environment variable is set and ask for it if it is not
   if [ -z "$CR_PAT" ]; then
-    echo "Please provide a personal access token:"
+    echo "Please provide a personal access token for GitHub:"
     read CR_PAT
   fi
-
-  wkg oci push ghcr.io/titusvm/wasm_rpn_calc:latest ./signed_composed_safe.wasm -u TitusVM -p $CR_PAT
-  # Move the public.key into the publisher-key folder
+  
+  # Move the public.key into the publisher-key folder, this key can be used to verify the signature of the binary (not the sigstore signature!!)
   mv public.key publisher-key/public.key
+
+  # We need to upload with wkg and sign with cosign to get the sigstore signature and still be able to later pull and execute the binary
+  wkg oci push ghcr.io/titusvm/wasm_rpn_calc_test:latest signed_composed_safe.wasm -u TitusVM -p $CR_PAT
+  cosign sign ghcr.io/titusvm/wasm_rpn_calc_test: --registry-username=TitusVM --registry-password=$CR_PAT
 fi
 
 echo "All operations completed successfully!"

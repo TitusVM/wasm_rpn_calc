@@ -4,6 +4,39 @@ This implementation of a calculator in [Reverse Polish Notation (RPN)](https://e
 ## Long running main
 Checkout the `long_running` branch to build an executable that takes a long time to run.
 
+## Running the demo
+There are two essential scripts to run the demo:
+- `./setup.sh` which will build all the binaries, sign them and publish them if you choose to do so (publishing requires a [GitHub token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token))
+- `./run.sh` which will verify the signatures of the components, compose them and run the resulting binary with `wasmtime` (and calling the audit process `--audit`)
+
+The scripts require following tools:
+- [`cargo-vet`](https://crates.io/crates/cargo-vet) for generating vet information of the source code
+- [`cargo-auditable`](https://crates.io/crates/cargo-auditable) for building the auditable binaries
+- [`wasmadder-cli`](https://crates.io/crates/wasmadder) for adding vet info to the wasm binaries
+- [`wasmsign2-cli`](https://crates.io/crates/wasmsign2-cli) for signing the wasm binaries
+- [`wac-cli`](https://crates.io/crates/wac-cli) for composing the wasm binaries
+- [`wkg`](https://crates.io/crates/wkg) for publishing the wasm binaries
+- [`cosign`](https://github.com/sigstore/cosign) for signing and verifying published packages
+- my custom `wasmtime` fork: [wasmtime](https://github.com/TitusVM/wasmtime) for running packages
+
+### `setup.sh`
+
+The `setup.sh` script automates the building and signing process of the project's components using both safe and vulnerable versions of dependencies. It performs the following steps:
+
+1. **Generate Signing Keys**: Creates public and secret keys for signing the WebAssembly components.
+2. **Build and Sign with Safe Dependencies**: Builds and signs the components using the original `Cargo.toml` with vetted dependencies.
+3. **Switch to Unvetted Supply Chain**: Replaces the supply chain folders to use unvetted dependencies and rebuilds and signs the components.
+4. **Switch to Vulnerable Dependencies**: Replaces the `Cargo.toml` with `VulnerableCargo.toml` to build and sign the components with vulnerable dependencies.
+5. **Restore Original State**: Restores the original `Cargo.toml` and supply chain folders to their safe versions.
+6. **Optional Publishing**: Offers the option to publish the safe composed binary to GitHub Container Registry (`ghcr.io`), signing it with Cosign for verification.
+
+### `run.sh`
+The `run.sh` script automates the verification and execution of the composed binary using the following steps:
+
+1. **Verify the package's signature**: Verifies the signatures of the components using `cosign`.
+2. **Download the package**: Downloads the package from the GitHub Container Registry (`ghcr.io`).
+3. **Runs the package**: Runs the package using `wasmtime` and the `--audit` flag to perform the audit process.
+
 ## Structure
 The example is divided into two seperate components: 
 - The `rpn` library responsible for implementing the calculator logic
