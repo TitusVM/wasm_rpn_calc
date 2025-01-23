@@ -2,3 +2,8 @@
 # cargo-vet audits file
 
 [audits]
+
+[[audits.hpack]]
+criteria = "safe-to-deploy"
+version = "0.3.0"
+notes = "Test for running cargo vet"

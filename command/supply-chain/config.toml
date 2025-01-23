@@ -9,5 +9,5 @@ version = "2.6.0"
 criteria = "safe-to-deploy"
 
 [[exemptions.wit-bindgen-rt]]
-version = "0.32.0"
+version = "0.38.0"
 criteria = "safe-to-deploy"

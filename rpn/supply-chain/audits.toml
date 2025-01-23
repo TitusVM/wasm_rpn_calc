@@ -3,5 +3,10 @@
 
 [[audits.bitflags]]
 criteria = "safe-to-deploy"
-version = "2.6.0"
+version = "2.8.0"
+notes = "Test for running cargo vet"
+
+[[audits.json]]
+criteria = "safe-to-deploy"
+version = "0.12.4"
 notes = "Test for running cargo vet"

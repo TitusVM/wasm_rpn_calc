@@ -5,3 +5,8 @@
 criteria = "safe-to-deploy"
 version = "2.5.0"
 notes = "Test for running cargo vet"
+
+[[audits.json]]
+criteria = "safe-to-deploy"
+version = "0.12.4"
+notes = "Test for running cargo vet"
