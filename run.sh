@@ -17,4 +17,8 @@ cosign verify ghcr.io/titusvm/wasm_rpn_calc_test:latest --certificate-identity=t
 #  -u TitusVM -p $CR_PAT
 wkg oci pull ghcr.io/titusvm/wasm_rpn_calc_test:latest
 
-~/master-work/pr/wasmtime/target/debug/wasmtime --audit -k ./publisher-key/public.key titusvm_wasm_rpn_calc_test.wasm
+# The publisher key is the one that was used to sign the binary that was published during the setup.sh script
+wasmtime --audit -k ./publisher-key/public.key titusvm_wasm_rpn_calc_test.wasm
+
+# Or run a specific wasm
+# wasmtime --audit -k ./public.key signed_composed_safe.wasm

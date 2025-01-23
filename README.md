@@ -10,13 +10,13 @@ There are two essential scripts to run the demo:
 - `./run.sh` which will verify the signatures of the components, compose them and run the resulting binary with `wasmtime` (and calling the audit process `--audit`)
 
 The scripts require following tools:
-- [`cargo-vet`](https://crates.io/crates/cargo-vet) for generating vet information of the source code
-- [`cargo-auditable`](https://crates.io/crates/cargo-auditable) for building the auditable binaries
-- [`wasmadder-cli`](https://crates.io/crates/wasmadder) for adding vet info to the wasm binaries
-- [`wasmsign2-cli`](https://crates.io/crates/wasmsign2-cli) for signing the wasm binaries
-- [`wac-cli`](https://crates.io/crates/wac-cli) for composing the wasm binaries
-- [`wkg`](https://crates.io/crates/wkg) for publishing the wasm binaries
-- [`cosign`](https://github.com/sigstore/cosign) for signing and verifying published packages
+- [`cargo-vet`](https://crates.io/crates/cargo-vet) 0.10.0 for generating vet information of the source code
+- [`cargo-auditable`](https://crates.io/crates/cargo-auditable) 1.84.0-nightly for building the auditable binaries
+- [`wasmadder-cli`](https://crates.io/crates/wasmadder) 0.1.0 for adding vet info to the wasm binaries
+- [`wasmsign2-cli`](https://crates.io/crates/wasmsign2-cli) 0.2.6 for signing the wasm binaries
+- [`wac-cli`](https://crates.io/crates/wac-cli) 0.6.0 for composing the wasm binaries
+- [`wkg`](https://crates.io/crates/wkg) 0.9.0 for publishing the wasm binaries
+- [`cosign`](https://github.com/sigstore/cosign) 2.4.1 for signing and verifying published packages
 - my custom `wasmtime` fork: [wasmtime](https://github.com/TitusVM/wasmtime) for running packages
 
 ### `setup.sh`
