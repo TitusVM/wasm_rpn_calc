@@ -7,4 +7,3 @@ binaries
 *.json
 .cargo
 *.png
-*.csv
