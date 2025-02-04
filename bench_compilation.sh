@@ -1,4 +1,4 @@
-# This is a benchmark for testing the compilation times of the binaries using the `wastime` runtime with and without audit checks.
+# This is a benchmark for testing the compilation times of the binaries.
 # The build and sign process for the components to discover overhead in the production pipeline
 
 benchmark_build_and_sign_safe() {
