@@ -1,10 +1,6 @@
-# This is a benchmark for testing the execution times of the binaries using the `wastime` runtime with and without audit checks.
-# There are three parts that need to be benchmarked:
-# 1. The build and sign process for the components to discover overhead in the production pipeline
-# 2. The size of the binaries with and without auditable data
-# 3. The execution time of the binaries with and without audit checks
+# This is a benchmark for testing the compilation times of the binaries using the `wastime` runtime with and without audit checks.
+# The build and sign process for the components to discover overhead in the production pipeline
 
-# Step 1: Build and sign components
 benchmark_build_and_sign_safe() {
     local component="rpn"
     local suffix="safe"
