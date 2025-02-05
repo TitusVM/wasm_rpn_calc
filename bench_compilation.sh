@@ -52,7 +52,7 @@ if [ "$response" != "y" ]; then
     echo "Skipping"
 else
     echo "Run,Result" > results_safe.csv
-    for i in {1..100}
+    for i in {1..1050}
     do
     result=$(benchmark_build_and_sign_safe)
     echo "$i,$result" >> results_safe.csv
@@ -66,7 +66,7 @@ if [ "$response" != "y" ]; then
 else
     echo "Benchmarking normal build process..."
     echo "Run,Result" > results_normal.csv
-    for i in {1..100}
+    for i in {1..1050}
     do
     result=$(benchmark_build)
     echo "$i,$result" >> results_normal.csv
